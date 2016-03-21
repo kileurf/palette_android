@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        Primary red = new Primary((SeekBar)findViewById(R.id.Rouge),(TextView)findViewById(R.id.EditRouge));
+        Primary blue = new Primary((SeekBar)findViewById(R.id.Bleu),(TextView)findViewById(R.id.EditBleu));
+        Primary vert = new Primary((SeekBar)findViewById(R.id.Vert),(TextView)findViewById(R.id.EditVert));
 
     }
 
