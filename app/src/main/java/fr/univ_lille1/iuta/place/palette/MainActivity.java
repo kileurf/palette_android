@@ -81,4 +81,20 @@ public class MainActivity extends AppCompatActivity {
         lookup.setBackgroundColor(Color.rgb(red.getValue(),vert.getValue(),blue.getValue()));
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putInt("red", red.getValue());
+        savedInstanceState.putInt("vert", vert.getValue());
+        savedInstanceState.putInt("blue",blue.getValue());
+    }
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        red.setValue(savedInstanceState.getInt("red"));
+        vert.setValue(savedInstanceState.getInt("vert"));
+        blue.setValue(savedInstanceState.getInt("blue"));
+        modifLookup();
+    }
+
 }

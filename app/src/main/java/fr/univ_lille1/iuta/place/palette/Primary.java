@@ -39,4 +39,9 @@ public class Primary {
         return bar.getProgress();
     }
 
+    public void setValue(int value){
+        bar.setProgress(value);
+        text.setText(""+value);
+    }
+
 }
