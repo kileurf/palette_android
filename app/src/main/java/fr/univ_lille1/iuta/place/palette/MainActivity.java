@@ -4,13 +4,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
 
+    String[] nom_color;
+    int[] color;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        nom_color = getResources().getStringArray(R.array.color_names);
+        color = getResources().getIntArray(R.array.colors);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.color_names, android.R.layout.simple_spinner_item);
+        spinner.setAdapter(adapter);
+
+
     }
 
     @Override
