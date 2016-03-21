@@ -1,5 +1,6 @@
 package fr.univ_lille1.iuta.place.palette;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -16,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
     String[] nom_color;
     int[] color;
     TextView demo;
+    static Button lookup;
+    static Primary red;
+    static Primary blue;
+    static Primary vert;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         color = getResources().getIntArray(R.array.colors);
         demo = (TextView) findViewById(R.id.demo);
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        lookup = (Button) findViewById(R.id.lookup);
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.color_names, android.R.layout.simple_spinner_item);
         spinner.setAdapter(adapter);
@@ -40,9 +48,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        Primary red = new Primary((SeekBar)findViewById(R.id.Rouge),(TextView)findViewById(R.id.EditRouge));
-        Primary blue = new Primary((SeekBar)findViewById(R.id.Bleu),(TextView)findViewById(R.id.EditBleu));
-        Primary vert = new Primary((SeekBar)findViewById(R.id.Vert),(TextView)findViewById(R.id.EditVert));
+        red = new Primary((SeekBar)findViewById(R.id.Rouge),(TextView)findViewById(R.id.EditRouge));
+        blue = new Primary((SeekBar)findViewById(R.id.Bleu),(TextView)findViewById(R.id.EditBleu));
+        vert = new Primary((SeekBar)findViewById(R.id.Vert),(TextView)findViewById(R.id.EditVert));
+        lookup.setBackgroundColor(Color.rgb(red.getValue(),vert.getValue(),blue.getValue()));
 
     }
 
@@ -67,4 +76,9 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public static void modifLookup(){
+        lookup.setBackgroundColor(Color.rgb(red.getValue(),vert.getValue(),blue.getValue()));
+    }
+
 }

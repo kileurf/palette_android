@@ -30,7 +30,7 @@ public class Primary {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                    MainActivity.modifLookup();
             }
         });
     }
